@@ -3,6 +3,7 @@ import "./style.scss";
 //引入react-redux
 import { connect } from "react-redux";
 import { actionCreators } from "../../store";
+import { Link } from "react-router-dom";
 
 class BlogList extends PureComponent {
   render() {
@@ -14,9 +15,9 @@ class BlogList extends PureComponent {
           return (
             <div className="item-wrapper" key={`${item.id}${index}`}>
               <div className="info-wrapper">
-                <a href="#" className="title">
+                <Link to="/detail" className="title">
                   {item.title}
-                </a>
+                </Link>
                 <div className="text">{item.info}</div>
               </div>
               <a href="#" className="pic-wrapper">

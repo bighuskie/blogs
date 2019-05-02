@@ -4,7 +4,7 @@ import "./style.scss";
 //Css动画插件
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
-// import { toJS } from "immutable";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   //搜索展示内容
@@ -57,7 +57,7 @@ class Header extends React.Component {
     let { isFocus, infoList, handleInputFocus, handleInputBlur } = this.props;
     return (
       <header className="header-wrapper">
-        <a className="logo-wrapper" href="/" />
+        <Link className="logo-wrapper" to="/" />
         <nav className="nav-wrapper">
           <ul>
             <li className="left active">首页</li>

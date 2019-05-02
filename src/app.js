@@ -11,15 +11,13 @@ import Header from "./components/header";
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Provider store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
           <Header />
-          <BrowserRouter>
-            <Route path="/" exact component={Home} />
-            <Route path="/detail" exact component={Detail} />
-          </BrowserRouter>
-        </Provider>
-      </div>
+          <Route path="/" exact component={Home} />
+          <Route path="/detail" exact component={Detail} />
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
