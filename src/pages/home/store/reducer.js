@@ -91,6 +91,28 @@ let defaultState = fromJS({
       imgUrl:
         "https://upload-images.jianshu.io/upload_images/16375643-0ea5ed5fbcc21051.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
     }
+  ],
+  recommendData: [
+    {
+      id: 1,
+      imgUrl:
+        "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    },
+    {
+      id: 2,
+      imgUrl:
+        "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    },
+    {
+      id: 3,
+      imgUrl:
+        "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    },
+    {
+      id: 4,
+      imgUrl:
+        "https://upload.jianshu.io/admin_banners/web_images/4592/22f5cfa984d47eaf3def6a48510cc87c157bf293.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+    }
   ]
 });
 
