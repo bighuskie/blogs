@@ -1,0 +1,27 @@
+.topic-wrapper {
+    padding: 20px 0 10px 0;
+    margin-left: -18px;
+
+    .topic-item {
+        display: inline-block;
+        height: 32px;
+        line-height: 32px;
+        margin-left: 18px;
+        margin-bottom: 18px;
+        padding-right: 10px;
+        border: 1px solid #dcdcdc;
+        border-radius: 4px;
+        background-color: #f7f7f7;
+        font-size: 14px;
+        color: #000;
+        text-decoration: none;
+
+        img {
+            display: block;
+            float: left;
+            width: 32px;
+            height: 100%;
+            margin-right: 10px;
+        }
+    }
+}

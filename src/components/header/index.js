@@ -24,7 +24,7 @@ class Header extends React.Component {
     if (newInfoList.length) {
       for (let i = (page - 1) * 10; i < page * 10; i++) {
         pageList.push(
-          <a key={newInfoList[i] + `${i}`} href="javascript:;">
+          <a key={newInfoList[i] + `${i}`} href="#">
             {newInfoList[i]}
           </a>
         );
