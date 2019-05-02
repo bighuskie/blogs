@@ -18,7 +18,7 @@ class BlogList extends PureComponent {
                 <Link to="/detail" className="title">
                   {item.title}
                 </Link>
-                <div className="text">{item.info}</div>
+                <summary className="text">{item.info}</summary>
               </div>
               <a href="#" className="pic-wrapper">
                 <img className="pic" src={item.imgUrl} alt="" />
