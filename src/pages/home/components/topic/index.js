@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 //引入react-redux
 import { connect } from "react-redux";
 import "./style.scss";
 
-class Topic extends Component {
+class Topic extends PureComponent {
   render() {
     let { topicData } = this.props;
     let topicDataArray = topicData.toJS();

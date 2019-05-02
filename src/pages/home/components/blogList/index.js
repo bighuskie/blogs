@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./style.scss";
 //引入react-redux
 import { connect } from "react-redux";
 import { actionCreators } from "../../store";
 
-class BlogList extends Component {
+class BlogList extends PureComponent {
   render() {
     let { blogListData, getMoreList, blogPage } = this.props;
     let blogListArray = blogListData.toJS();

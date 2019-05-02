@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+//PureComponent(只有相关组件的state发生改变时对应组件重新render)最好与immutable一起使用，要不然很多坑
+import React, { PureComponent } from "react";
 import "./style.scss";
 //引入组件
 import Topic from "./components/topic";
@@ -10,7 +11,7 @@ import FixedView from "./components/fixedview";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
 
-class Home extends Component {
+class Home extends PureComponent {
   componentDidMount() {
     let { changeHomeReducer } = this.props;
     changeHomeReducer();

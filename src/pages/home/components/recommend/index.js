@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 //引入react-redux
 import { connect } from "react-redux";
 import "./style.scss";
 
-class Recommend extends Component {
+class Recommend extends PureComponent {
   render() {
     let { recommendData } = this.props;
     let recommendArray = recommendData.toJS();

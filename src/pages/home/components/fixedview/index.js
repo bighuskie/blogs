@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./style.scss";
 import { connect } from "react-redux";
 import { actionCreators } from "../../store";
 
-class FixedView extends Component {
+class FixedView extends PureComponent {
   bindScrollEvent = () => {
     let { changeShowFixed } = this.props;
     window.addEventListener("scroll", changeShowFixed);
