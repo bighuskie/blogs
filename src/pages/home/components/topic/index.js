@@ -12,7 +12,7 @@ class Topic extends Component {
         {topicDataArray.map(item => {
           return (
             <a href="#" className="topic-item" key={item.id}>
-              <img src={item.imgUrl} alt={item.title} />
+              <img src={item.imgUrl} alt="" />
               {item.title}
             </a>
           );

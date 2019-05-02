@@ -12,7 +12,10 @@ class Home extends Component {
       <main className="container-wrapper">
         <div className="left-wrapper">
           <section className="banner-wrapper">
-            <img src="https://upload.jianshu.io/admin_banners/web_images/4652/f32e7f414d86d5a1709f8e6f00ec3272fd9f604b.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540" />
+            <img
+              src="https://upload.jianshu.io/admin_banners/web_images/4652/f32e7f414d86d5a1709f8e6f00ec3272fd9f604b.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+              alt=""
+            />
           </section>
           <Topic />
           <BlogList />

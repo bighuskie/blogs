@@ -1,0 +1,44 @@
+.item-wrapper {
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+
+    .info-wrapper {
+        float: left;
+        width: 460px;
+
+        .title {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bolder;
+            color: #969696;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .text {
+            width: 460px;
+            max-height: 72px;
+            margin: 10px 5px 10px 0;
+            overflow: hidden;
+            font-size: 13px;
+            line-height: 24px;
+            color: #999;
+        }
+    }
+
+    .pic-wrapper {
+        float: right;
+        text-decoration: none;
+
+        .pic {
+            display: block;
+            float: right;
+            width: 150px;
+            height: 100px;
+        }
+    }
+}
