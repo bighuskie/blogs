@@ -1,17 +1,34 @@
 import React, { Component } from "react";
+//引入react-redux
+import { connect } from "react-redux";
 import "./style.scss";
 
 class Topic extends Component {
   render() {
+    let { topicData } = this.props;
+    let topicDataArray = topicData.toJS();
     return (
       <section className="topic-wrapper">
-        <a href="#" className="topic-item">
-          <img src="http://img0.imgtn.bdimg.com/it/u=3843255790,1398194940&fm=26&gp=0.jpg" />
-          社会热点
-        </a>
+        {topicDataArray.map(item => {
+          return (
+            <a href="#" className="topic-item" key={item.id}>
+              <img src={item.imgUrl} alt={item.title} />
+              {item.title}
+            </a>
+          );
+        })}
       </section>
     );
   }
 }
 
-export default Topic;
+const mapStateToProps = state => {
+  return {
+    topicData: state.get("Home").get("topicData")
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Topic);
