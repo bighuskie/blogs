@@ -6,7 +6,8 @@ let defaultState = fromJS({
   topicData: [],
   blogListData: [],
   recommendData: [],
-  blogPage: 1
+  blogPage: 1,
+  isShowFixed: false
 });
 
 export default (state = defaultState, action) => {
@@ -19,11 +20,15 @@ export default (state = defaultState, action) => {
       });
     case actionTypes.GET_MORE_BLOG_LIST:
       let preBlogListData = state.get("blogListData");
-      let newBlogListData = preBlogListData.concat(fromJS(action.moreBlogList));
+      let newBlogListData = preBlogListData.concat(
+        fromJS(action.moreBlogList)
+      );
       return state.merge({
         blogListData: newBlogListData,
         blogPage: action.nextPage
       });
+    case actionTypes.CHANGE_SHOW_FIXED:
+      return state.set("isShowFixed", action.showFlag);
     default:
       return state;
   }

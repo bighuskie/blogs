@@ -51,3 +51,15 @@ export const getMoreList = currentPage => {
       });
   };
 };
+
+/**
+ * 判断及修改是否显示浮窗action
+ */
+
+export const changeShowFixed = showFlag => {
+  console.log("hahah")
+  return {
+    type: actionTypes.CHANGE_SHOW_FIXED,
+    showFlag
+  };
+};

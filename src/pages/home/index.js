@@ -5,6 +5,7 @@ import Topic from "./components/topic";
 import BlogList from "./components/blogList";
 import Recommend from "./components/recommend";
 import Writer from "./components/writer";
+import FixedView from "./components/fixedview";
 //引入react-redux
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
@@ -31,6 +32,7 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </div>
+        <FixedView />
       </main>
     );
   }

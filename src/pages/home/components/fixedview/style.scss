@@ -1,0 +1,14 @@
+.fixed-wrapper{
+    position: fixed;
+    right: 100px;
+    bottom: 50px;
+    .fixed-item{
+        width: 50px;
+        height: 50px;
+        border: 1px solid #eee;
+        text-align: center;
+        line-height: 50px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+}
