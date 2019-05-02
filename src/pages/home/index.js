@@ -1,12 +1,19 @@
 import React, { Component } from "react";
+import "./style.scss";
 //引入组件
 import Topic from "./components/topic";
 import BlogList from "./components/blogList";
 import Recommend from "./components/recommend";
 import Writer from "./components/writer";
-import "./style.scss";
+//引入react-redux
+import { connect } from "react-redux";
+import { actionCreator } from "./store";
 
 class Home extends Component {
+  componentDidMount() {
+    let { changeHomeReducer } = this.props;
+    changeHomeReducer();
+  }
   render() {
     return (
       <main className="container-wrapper">
@@ -28,5 +35,16 @@ class Home extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    changeHomeReducer() {
+      const action = actionCreator.getHomeData();
+      dispatch(action);
+    }
+  };
+};
 
-export default Home;
+export default connect(
+  null,
+  mapDispatchToProps
+)(Home);

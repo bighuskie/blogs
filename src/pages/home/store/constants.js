@@ -1,0 +1,1 @@
+export const CHANGE_HOME_REDUCER = "home/CHANGE_HOME_REDUCER";
