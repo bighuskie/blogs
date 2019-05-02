@@ -4,32 +4,57 @@ import "./style.scss";
 //Css动画插件
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
+// import { toJS } from "immutable";
 
 class Header extends React.Component {
   //搜索展示内容
-  showInfo = showFlag => {
-    if (showFlag) {
+  showInfo = () => {
+    let {
+      isFocus,
+      isMouseIn,
+      infoList,
+      page,
+      totalPages,
+      handleMouseEnter,
+      handleMouseLeave,
+      handleChangePage
+    } = this.props;
+    let newInfoList = infoList.toJS();
+    let pageList = [];
+    if (newInfoList.length) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
+        pageList.push(
+          <a key={newInfoList[i] + `${i}`} href="javascript:;">
+            {newInfoList[i]}
+          </a>
+        );
+      }
+    }
+    if (isFocus || isMouseIn) {
       return (
-        <div className="info-wrapper">
+        <div
+          className="info-wrapper"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <div className="head-wrapper">
             热门搜索
-            <span>换一批</span>
+            <span
+              onClick={() =>
+                handleChangePage(page, totalPages, this.refs.iconspin)
+              }
+            >
+              <i className="iconfont iconspin" ref="iconspin" />
+              换一批
+            </span>
           </div>
-          <div className="item-wrapper">
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-            <a>教育</a>
-          </div>
+          <div className="item-wrapper">{pageList}</div>
         </div>
       );
     }
   };
   render() {
+    let { isFocus, infoList, handleInputFocus, handleInputBlur } = this.props;
     return (
       <header className="header-wrapper">
         <a className="logo-wrapper" href="/" />
@@ -39,26 +64,22 @@ class Header extends React.Component {
             <li className="left">下载App</li>
             <li className="left">
               <form>
-                <CSSTransition
-                  in={this.props.isFocus}
-                  timeout={200}
-                  classNames="slide"
-                >
+                <CSSTransition in={isFocus} timeout={200} classNames="slide">
                   <input
                     placeholder="搜索"
-                    className={this.props.isFocus ? "focused" : ""}
-                    onFocus={this.props.handleInputFocus}
-                    onBlur={this.props.handleInputBlur}
+                    className={isFocus ? "focused" : ""}
+                    onFocus={() => handleInputFocus(infoList)}
+                    onBlur={handleInputBlur}
                   />
                 </CSSTransition>
                 <span
                   className={
-                    this.props.isFocus ? "focused iconfont" : "iconfont"
+                    isFocus ? "focused iconfont zoom" : "iconfont zoom"
                   }
                 >
                   &#xe6e4;
                 </span>
-                {this.showInfo(this.props.isFocus)}
+                {this.showInfo()}
               </form>
             </li>
             <li className="right">登录</li>
@@ -82,17 +103,58 @@ class Header extends React.Component {
 const mapStateToProps = state => {
   //state.Header已经变为immtable对象,需要使用特定的API
   return {
-    isFocus: state.get("Header").get("isFocus")
+    isFocus: state.get("Header").get("isFocus"),
+    isMouseIn: state.get("Header").get("isMouseIn"),
+    infoList: state.getIn(["Header", "infoList"]),
+    page: state.getIn(["Header", "page"]),
+    totalPages: state.getIn(["Header", "totalPages"])
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleInputFocus() {
+    /**
+     * 鼠标聚焦输入框，设置redux数据
+     */
+    handleInputFocus(infoList) {
+      //只有数据为空时才发ajax请求
+      infoList.size <= 0 && dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocus());
     },
+    /**
+     * 鼠标失焦输入框，设置redux数据
+     */
     handleInputBlur() {
       dispatch(actionCreators.searchBlur());
+    },
+    /**
+     * 鼠标移进控制热门搜索显示，设置redux数据
+     */
+    handleMouseEnter() {
+      dispatch(actionCreators.mouseEnter());
+    },
+    /**
+     * 鼠标移出控制热门搜索显示，设置redux数据
+     */
+    handleMouseLeave() {
+      dispatch(actionCreators.mouseLeave());
+    },
+    /**
+     * 换一批热门搜索显示并旋转图标，设置redux数据
+     */
+    handleChangePage(currentPage, totalPages, ref) {
+      let originAngle = ref.style.transform.replace(/[^0-9]/gi, "");
+      if (originAngle) {
+        originAngle = parseInt(originAngle, 10);
+      } else {
+        originAngle = 0;
+      }
+      ref.style.transform = `rotate(${originAngle + 360}deg)`;
+      if (currentPage < totalPages) {
+        dispatch(actionCreators.changePage(currentPage + 1));
+      } else {
+        dispatch(actionCreators.changePage(1));
+      }
     }
   };
 };

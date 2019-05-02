@@ -85,7 +85,7 @@
 
                     }
 
-                    .iconfont {
+                    .zoom {
                         position: absolute;
                         display: inline-block;
                         top: 14px;
@@ -119,22 +119,36 @@
 
                             span {
                                 float: right;
+                                cursor: pointer;
                                 font-size: 13px;
+
+                                .iconspin {
+                                    display: inline-block;
+                                    margin-right: 5px;
+                                    transition: all 0.2s linear;
+                                    transform-origin: center center;
+                                    font-size: 14px;
+                                    color: #ea6f5a;
+                                }
                             }
+
                         }
 
                         .item-wrapper {
                             line-height: 0;
+
                             a {
                                 display: inline-block;
                                 line-height: 20px;
                                 padding: 0 5px;
                                 margin-right: 13px;
                                 margin-bottom: 15px;
+                                text-decoration: none;
                                 border: 1px solid #ddd;
                                 border-radius: 3px;
                                 font-size: 12px;
                                 color: #787878;
+                                cursor: pointer;
                             }
                         }
                     }
