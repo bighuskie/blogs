@@ -7,7 +7,7 @@ import Recommend from "./components/recommend";
 import Writer from "./components/writer";
 //引入react-redux
 import { connect } from "react-redux";
-import { actionCreator } from "./store";
+import { actionCreators } from "./store";
 
 class Home extends Component {
   componentDidMount() {
@@ -38,7 +38,7 @@ class Home extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     changeHomeReducer() {
-      const action = actionCreator.getHomeData();
+      const action = actionCreators.getHomeData();
       dispatch(action);
     }
   };

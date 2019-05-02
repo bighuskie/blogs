@@ -2,11 +2,11 @@
 import { fromJS } from "immutable";
 import { actionTypes } from "./index";
 
-
 let defaultState = fromJS({
   topicData: [],
   blogListData: [],
-  recommendData: []
+  recommendData: [],
+  blogPage: 1
 });
 
 export default (state = defaultState, action) => {
@@ -16,6 +16,13 @@ export default (state = defaultState, action) => {
         topicData: fromJS(action.topicData),
         blogListData: fromJS(action.blogListData),
         recommendData: fromJS(action.recommendData)
+      });
+    case actionTypes.GET_MORE_BLOG_LIST:
+      let preBlogListData = state.get("blogListData");
+      let newBlogListData = preBlogListData.concat(fromJS(action.moreBlogList));
+      return state.merge({
+        blogListData: newBlogListData,
+        blogPage: action.nextPage
       });
     default:
       return state;

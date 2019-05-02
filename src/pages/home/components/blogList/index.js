@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import "./style.scss";
 //引入react-redux
 import { connect } from "react-redux";
-import "./style.scss";
+import { actionCreators } from "../../store";
 
 class BlogList extends Component {
   render() {
-    let { blogListData } = this.props;
+    let { blogListData, getMoreList, blogPage } = this.props;
     let blogListArray = blogListData.toJS();
     return (
       <section className="list-wrapper">
-        {blogListArray.map(item => {
+        {blogListArray.map((item, index) => {
           return (
-            <div className="item-wrapper" key={item.id}>
+            <div className="item-wrapper" key={`${item.id}${index}`}>
               <div className="info-wrapper">
                 <a href="#" className="title">
                   {item.title}
@@ -24,17 +25,32 @@ class BlogList extends Component {
             </div>
           );
         })}
+        <div className="readMore-wrapper" onClick={() => getMoreList(blogPage)}>
+          阅读更多
+        </div>
       </section>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    blogListData: state.getIn(["Home", "blogListData"])
+    blogListData: state.getIn(["Home", "blogListData"]),
+    blogPage: state.getIn(["Home", "blogPage"])
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    /**
+     * 点击加载更多内容
+     */
+    getMoreList(currentPage) {
+      dispatch(actionCreators.getMoreList(currentPage));
+    }
   };
 };
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(BlogList);
