@@ -2,7 +2,8 @@ import React, { PureComponent } from "react";
 import "./style.scss";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
-import { Redirect } from "react-router-dom";
+//异步加载组件时对应组件可以获取路由信息
+import { Redirect ,withRouter} from "react-router-dom";
 
 class Login extends PureComponent {
   render() {
@@ -73,4 +74,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(withRouter(Login));

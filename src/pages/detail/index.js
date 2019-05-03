@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./style.scss";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
+//异步加载组件时对应组件可以获取路由信息
+import { withRouter } from "react-router-dom";
 
 class Detail extends Component {
   componentDidMount() {
@@ -39,4 +41,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Detail);
+)(withRouter(Detail));

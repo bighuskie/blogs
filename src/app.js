@@ -6,8 +6,8 @@ import store from "./store/store";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./components/header";
 import Home from "./pages/home";
-import Detail from "./pages/detail";
-import Login from './pages/login';
+import Detail from "./pages/detail/loadable";//引入异步组件
+import Login from './pages/login/loadable';//引入异步组件
 
 class App extends React.Component {
   render() {
