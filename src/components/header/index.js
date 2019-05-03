@@ -65,52 +65,58 @@ class Header extends React.Component {
     } = this.props;
     return (
       <header className="header-wrapper">
-        <Link className="logo-wrapper" to="/" />
-        <nav className="nav-wrapper">
-          <ul>
-            <li className="left active">首页</li>
-            <li className="left">下载App</li>
-            <li className="left">
-              <form>
-                <CSSTransition in={isFocus} timeout={200} classNames="slide">
-                  <input
-                    placeholder="搜索"
-                    className={isFocus ? "focused" : ""}
-                    onFocus={() => handleInputFocus(infoList)}
-                    onBlur={handleInputBlur}
-                  />
-                </CSSTransition>
-                <span
-                  className={
-                    isFocus ? "focused iconfont zoom" : "iconfont zoom"
-                  }
-                >
-                  &#xe6e4;
-                </span>
-                {this.showInfo()}
-              </form>
-            </li>
-            {isLogin ? (
-              <li className="right" onClick={handleloginOut}>
-                退出
+        <nav className="width-limit">
+          <Link className="logo-wrapper" to="/" />
+          <section className="btn-wrapper">
+            <button className="register">注册</button>
+            <button className="write">
+              <span className="iconfont">&#xe60b;</span>
+              写文章
+            </button>
+          </section>
+          <section className="nav-wrapper">
+            <ul>
+              <li className="left active">首页</li>
+              <li className="left">下载App</li>
+              <li className="left">
+                <form>
+                  <CSSTransition
+                    in={isFocus}
+                    timeout={200}
+                    classNames="slide"
+                  >
+                    <input
+                      placeholder="搜索"
+                      className={isFocus ? "focused" : ""}
+                      onFocus={() => handleInputFocus(infoList)}
+                      onBlur={handleInputBlur}
+                    />
+                  </CSSTransition>
+                  <span
+                    className={
+                      isFocus ? "focused iconfont zoom" : "iconfont zoom"
+                    }
+                  >
+                    &#xe6e4;
+                  </span>
+                  {this.showInfo()}
+                </form>
               </li>
-            ) : (
-              <Link to="/login">
-                <li className="right">登录</li>
-              </Link>
-            )}
-            <li className="right">
-              <span className="iconfont">&#xe636;</span>
-            </li>
-          </ul>
+              {isLogin ? (
+                <li className="right" onClick={handleloginOut}>
+                  退出
+                </li>
+              ) : (
+                <Link to="/login">
+                  <li className="right">登录</li>
+                </Link>
+              )}
+              <li className="right">
+                <span className="iconfont">&#xe636;</span>
+              </li>
+            </ul>
+          </section>
         </nav>
-        <div className="btn-wrapper">
-          <button className="register">注册</button>
-          <button className="write">
-            <span className="iconfont">&#xe60b;</span>
-            写文章
-          </button>
-        </div>
       </header>
     );
   }
