@@ -4,6 +4,7 @@ import "./style.scss";
 //Css动画插件
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
+import { actionCreators as loginActionCreators } from "../../pages/login/store";
 import { Link } from "react-router-dom";
 
 class Header extends React.Component {
@@ -54,7 +55,14 @@ class Header extends React.Component {
     }
   };
   render() {
-    let { isFocus, infoList, handleInputFocus, handleInputBlur } = this.props;
+    let {
+      isFocus,
+      infoList,
+      isLogin,
+      handleInputFocus,
+      handleInputBlur,
+      handleloginOut
+    } = this.props;
     return (
       <header className="header-wrapper">
         <Link className="logo-wrapper" to="/" />
@@ -82,7 +90,15 @@ class Header extends React.Component {
                 {this.showInfo()}
               </form>
             </li>
-            <li className="right">登录</li>
+            {isLogin ? (
+              <li className="right" onClick={handleloginOut}>
+                退出
+              </li>
+            ) : (
+              <Link to="/login">
+                <li className="right">登录</li>
+              </Link>
+            )}
             <li className="right">
               <span className="iconfont">&#xe636;</span>
             </li>
@@ -107,7 +123,8 @@ const mapStateToProps = state => {
     isMouseIn: state.get("Header").get("isMouseIn"),
     infoList: state.getIn(["Header", "infoList"]),
     page: state.getIn(["Header", "page"]),
-    totalPages: state.getIn(["Header", "totalPages"])
+    totalPages: state.getIn(["Header", "totalPages"]),
+    isLogin: state.getIn(["Login", "isLogin"])
   };
 };
 
@@ -155,6 +172,12 @@ const mapDispatchToProps = dispatch => {
       } else {
         dispatch(actionCreators.changePage(1));
       }
+    },
+    /**
+     * 点击退出按钮退出
+     */
+    handleloginOut() {
+      dispatch(loginActionCreators.handleloginOut());
     }
   };
 };
