@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 //引入路由
 import { BrowserRouter, Route } from "react-router-dom";
+import Header from "./components/header";
 import Home from "./pages/home";
 import Detail from "./pages/detail";
-import Header from "./components/header";
+import Login from './pages/login';
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
           <Header />
           <Route path="/" exact component={Home} />
           <Route path="/detail/:id" exact component={Detail} />
+          <Route path="/login" exact component={Login} />
         </BrowserRouter>
       </Provider>
     );
