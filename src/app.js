@@ -15,7 +15,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Header />
           <Route path="/" exact component={Home} />
-          <Route path="/detail" exact component={Detail} />
+          <Route path="/detail/:id" exact component={Detail} />
         </BrowserRouter>
       </Provider>
     );

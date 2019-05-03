@@ -6,7 +6,8 @@ import { actionCreators } from "./store";
 class Detail extends Component {
   componentDidMount() {
     let { getArticleDetail } = this.props;
-    getArticleDetail();
+    let articleId = this.props.match.params.id;
+    getArticleDetail(articleId);
   }
   render() {
     let { articleTitle, articleContent } = this.props;
@@ -29,8 +30,8 @@ const mapDispatchToProps = dispatch => {
     /**
      * 获取文章详情页
      */
-    getArticleDetail() {
-      dispatch(actionCreators.getArticleDetail());
+    getArticleDetail(id) {
+      dispatch(actionCreators.getArticleDetail(id));
     }
   };
 };

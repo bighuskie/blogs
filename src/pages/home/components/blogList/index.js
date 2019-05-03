@@ -15,7 +15,7 @@ class BlogList extends PureComponent {
           return (
             <div className="item-wrapper" key={`${item.id}${index}`}>
               <div className="info-wrapper">
-                <Link to="/detail" className="title">
+                <Link to={"/detail/" + item.id} className="title">
                   {item.title}
                 </Link>
                 <summary className="text">{item.info}</summary>

@@ -12,10 +12,10 @@ const getDetailAction = data => {
   };
 };
 
-export const getArticleDetail = () => {
+export const getArticleDetail = (id) => {
   return dispatch => {
     axios
-      .get("/api/articledetail.json")
+      .get(`/api/articledetail.json?id=${id}`)
       .then(res => {
         const data = res.data;
         dispatch(getDetailAction(data));
