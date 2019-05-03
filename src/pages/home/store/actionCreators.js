@@ -57,7 +57,6 @@ export const getMoreList = currentPage => {
  */
 
 export const changeShowFixed = showFlag => {
-  console.log("hahah")
   return {
     type: actionTypes.CHANGE_SHOW_FIXED,
     showFlag

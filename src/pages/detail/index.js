@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import "./style.scss";
 import { connect } from "react-redux";
+import { actionCreators } from "./store";
 
 class Detail extends Component {
+  componentDidMount() {
+    let { getArticleDetail } = this.props;
+    getArticleDetail();
+  }
   render() {
     let { articleTitle, articleContent } = this.props;
     return (
@@ -21,7 +26,12 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    
+    /**
+     * 获取文章详情页
+     */
+    getArticleDetail() {
+      dispatch(actionCreators.getArticleDetail());
+    }
   };
 };
 
